@@ -52,7 +52,7 @@ public class DialogView extends View {
     public boolean onTouchEvent(MotionEvent event) {
         if(event.getAction() == MotionEvent.ACTION_DOWN) {
             float x = event.getX(), y = event.getY();
-            
+
         }
         return true;
     }
