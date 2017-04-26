@@ -31,3 +31,7 @@
 ```
     checkBoxGroupDialog.show();
 ```
+
+#### Demo
+
+<img src="https://github.com/Anwesh43/CheckBoxGroupDialog/blob/master/screencast/checkboxgroupdialog.gif" width="300px" height="500px"> 
