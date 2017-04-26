@@ -19,9 +19,13 @@ public class DialogView extends View {
     private List<CheckBoxElement> checkBoxElements = new ArrayList<>();
     private ButtonElement buttonElement;
     private DialogAnimationController dialogAnimationController;
-    public DialogView(Context context, List<String> titles, final ViewAnimationController viewAnimationController) {
+    public DialogView(Context context, List<CheckBoxElement> checkBoxElements) {
         super(context);
-        initCheckBoxes(titles);
+        this.checkBoxElements = checkBoxElements;
+
+        dialogAnimationController = new DialogAnimationController(this,checkBoxElements);
+    }
+    public void setButtonElement(final ViewAnimationController viewAnimationController) {
         buttonElement = new ButtonElement(new ButtonElement.ButtonClickListener() {
             @Override
             public void onButtonClick() {
@@ -29,12 +33,7 @@ public class DialogView extends View {
             }
         });
     }
-    public void initCheckBoxes(List<String> titles) {
-        for(String title:titles) {
-            checkBoxElements.add(new CheckBoxElement(title));
-        }
-        dialogAnimationController = new DialogAnimationController(this,checkBoxElements);
-    }
+
     public void onDraw(Canvas canvas) {
         canvas.drawColor(Color.WHITE);
         int w = canvas.getWidth(),h = canvas.getHeight();
