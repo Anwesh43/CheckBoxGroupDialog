@@ -18,6 +18,7 @@ public class DialogView extends View {
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private List<CheckBoxElement> checkBoxElements = new ArrayList<>();
     private ButtonElement buttonElement;
+    private DialogAnimationController dialogAnimationController;
     public DialogView(Context context,List<String> titles) {
         super(context);
         initCheckBoxes(titles);
@@ -32,6 +33,7 @@ public class DialogView extends View {
         for(String title:titles) {
             checkBoxElements.add(new CheckBoxElement(title));
         }
+        dialogAnimationController = new DialogAnimationController(this,checkBoxElements);
     }
     public void onDraw(Canvas canvas) {
         canvas.drawColor(Color.WHITE);
@@ -42,17 +44,26 @@ public class DialogView extends View {
                 checkBoxElement.setDimension(w/10,y,4*w/5);
                 y+=(3*gap/2);
             }
+            buttonElement.setDimension(w/3,h-h/9,w/4);
         }
         for(CheckBoxElement checkBoxElement:checkBoxElements) {
             checkBoxElement.draw(canvas,paint);
         }
         buttonElement.draw(canvas,paint);
         time++;
+        dialogAnimationController.animate();
     }
     public boolean onTouchEvent(MotionEvent event) {
         if(event.getAction() == MotionEvent.ACTION_DOWN) {
             float x = event.getX(), y = event.getY();
-
+            if(buttonElement.handleTap(x,y)) {
+                dialogAnimationController.addToAnimQueue(buttonElement);
+            }
+            for(CheckBoxElement checkBoxElement:checkBoxElements) {
+                if(checkBoxElement.handleTap(x,y)) {
+                    dialogAnimationController.addToAnimQueue(checkBoxElement);
+                }
+            }
         }
         return true;
     }
