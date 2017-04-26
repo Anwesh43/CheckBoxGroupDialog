@@ -33,7 +33,9 @@ public class DialogView extends View {
             }
         });
     }
-
+    public void resetButton() {
+        buttonElement.resetScale();
+    }
     public void onDraw(Canvas canvas) {
         canvas.drawColor(Color.WHITE);
         int w = canvas.getWidth(),h = canvas.getHeight();

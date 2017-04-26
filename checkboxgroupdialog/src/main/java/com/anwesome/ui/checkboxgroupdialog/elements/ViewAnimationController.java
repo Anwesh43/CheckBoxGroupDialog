@@ -25,6 +25,7 @@ public class ViewAnimationController implements Animator.AnimatorListener,ValueA
     public void start() {
         startAnim.start();
         dir = 1;
+        dialogView.resetButton();
         dialogView.setVisibility(View.VISIBLE);
     }
     public void end() {

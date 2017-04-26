@@ -41,6 +41,7 @@ public class CheckBoxElement extends Element{
         canvas.scale(scale,scale);
         canvas.drawCircle(0,0,r,paint);
         canvas.restore();
+        paint.setColor(Color.BLACK);
         String adjustedTitle = adjustString(paint);
         paint.setTextSize(getSize()/8);
         canvas.drawText(adjustedTitle,3*getSize()/5-paint.measureText(adjustedTitle)/2,getSize()/25+paint.getTextSize()/2,paint);

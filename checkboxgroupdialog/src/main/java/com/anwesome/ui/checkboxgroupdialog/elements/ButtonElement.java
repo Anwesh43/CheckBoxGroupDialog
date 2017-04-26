@@ -11,6 +11,9 @@ import android.graphics.RectF;
 public class ButtonElement extends Element {
     private float dir = 0,scale = 0;
     private ButtonClickListener buttonClickListener;
+    public void resetScale() {
+        scale = 0;
+    }
     public void drawElement(Canvas canvas, Paint paint) {
         float h = getSize()/2;
         paint.setStyle(Paint.Style.STROKE);
@@ -20,7 +23,7 @@ public class ButtonElement extends Element {
         paint.setColor(Color.BLACK);
         String okText = "OK";
         paint.setTextSize(getSize()/6);
-        canvas.drawText(okText,getSize()/2-paint.measureText(okText)/2,getSize()/8+paint.getTextSize()/2,paint);
+        canvas.drawText(okText,getSize()/2-paint.measureText(okText)/2,getSize()/6+paint.getTextSize()/2,paint);
         paint.setColor(Color.parseColor("#99000000"));
         canvas.save();
         canvas.translate(getSize()/2,h/2);
