@@ -68,12 +68,25 @@ public class CheckBoxElement extends Element{
     }
     public boolean stopUpdating() {
         boolean condition = dir == 0;
-        if(condition && scale >= 1) {
-
+        if(condition && onCheckChangeListener!=null) {
+            if(scale >= 1) {
+                onCheckChangeListener.onCheck();
+            }
+            else {
+                onCheckChangeListener.onUnCheck();
+            }
         }
         return condition;
     }
     public String getTitle() {
         return title;
+    }
+    public void setOnCheckChangeListener(OnCheckChangeListener onCheckChangeListener) {
+        this.onCheckChangeListener = onCheckChangeListener;
+    }
+    private OnCheckChangeListener onCheckChangeListener;
+    public interface OnCheckChangeListener {
+        void onCheck();
+        void onUnCheck();
     }
 }
