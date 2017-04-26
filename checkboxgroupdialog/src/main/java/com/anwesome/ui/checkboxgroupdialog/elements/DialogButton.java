@@ -15,9 +15,14 @@ public class DialogButton extends View {
     private float scale = 0;
     private Paint paint;
     private String title;
+    private ViewAnimationController viewAnimationController;
     public DialogButton(Context context,String title,Paint paint) {
         super(context);
         this.paint = paint;
+        this.title = title;
+    }
+    public void setViewAnimationController(ViewAnimationController viewAnimationController) {
+        this.viewAnimationController = viewAnimationController;
     }
     public void onDraw(Canvas canvas) {
         int w = canvas.getWidth(),h = canvas.getHeight();
@@ -31,8 +36,8 @@ public class DialogButton extends View {
         canvas.restore();
     }
     public boolean onTouchEvent(MotionEvent event) {
-        if(event.getAction() == MotionEvent.ACTION_DOWN) {
-
+        if(event.getAction() == MotionEvent.ACTION_DOWN && viewAnimationController!=null) {
+            viewAnimationController.start();
         }
         return true;
     }

@@ -19,13 +19,13 @@ public class DialogView extends View {
     private List<CheckBoxElement> checkBoxElements = new ArrayList<>();
     private ButtonElement buttonElement;
     private DialogAnimationController dialogAnimationController;
-    public DialogView(Context context,List<String> titles) {
+    public DialogView(Context context, List<String> titles, final ViewAnimationController viewAnimationController) {
         super(context);
         initCheckBoxes(titles);
         buttonElement = new ButtonElement(new ButtonElement.ButtonClickListener() {
             @Override
             public void onButtonClick() {
-                setVisibility(INVISIBLE);
+                viewAnimationController.end();
             }
         });
     }
