@@ -28,6 +28,7 @@ public class CheckBoxGroupDialog {
     public CheckBoxGroupDialog(Activity activity) {
         this.activity = activity;
         this.relativeLayout = new RelativeLayout(activity);
+        initWH();
     }
     public void initWH() {
         DisplayManager displayManager = (DisplayManager) activity.getSystemService(Context.DISPLAY_SERVICE);
@@ -61,8 +62,13 @@ public class CheckBoxGroupDialog {
             dialogView.setScaleX(0);
             dialogView.setScaleY(0);
             dialogView.setVisibility(View.INVISIBLE);
+            dialogView.setX(w/20);
+            dialogView.setY(h/20);
+            dialogView.setElevation(20);
             relativeLayout.addView(dialogView,new ViewGroup.LayoutParams(4*w/5,4*h/5));
-            activity.setContentView(dialogView);
+            dialogButton.setX(x);
+            dialogButton.setY(y);
+            activity.setContentView(relativeLayout);
             isShown = true;
         }
     }

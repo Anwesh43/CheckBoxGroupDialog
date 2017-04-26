@@ -15,15 +15,21 @@ public class CheckBoxElement extends Element{
     }
     public void update() {
         scale+=dir*0.2f;
-        if(scale >= 1 || scale <= 0) {
+        if(scale > 1 || scale < 0) {
             dir = 0;
+            if(scale > 1) {
+                scale = 1;
+            }
+            if(scale < 0) {
+                scale = 0;
+            }
         }
     }
     public void startUpdating() {
         dir = scale <= 0?1:-1;
     }
     protected void drawElement(Canvas canvas,Paint paint) {
-        float r = getSize()/10;
+        float r = getSize()/20;
         paint.setColor(Color.BLACK);
         paint.setStrokeWidth(r/6);
         paint.setStyle(Paint.Style.STROKE);
@@ -31,12 +37,13 @@ public class CheckBoxElement extends Element{
         paint.setStyle(Paint.Style.FILL);
         paint.setColor(Color.parseColor("#3F51B5"));
         canvas.save();
+        canvas.translate(r,r);
         canvas.scale(scale,scale);
-        canvas.drawCircle(r,r,r,paint);
+        canvas.drawCircle(0,0,r,paint);
         canvas.restore();
         String adjustedTitle = adjustString(paint);
-        paint.setTextSize(r/2);
-        canvas.drawText(adjustedTitle,3*getSize()/5-paint.measureText(adjustedTitle)/2,paint.getTextSize()/2,paint);
+        paint.setTextSize(getSize()/8);
+        canvas.drawText(adjustedTitle,3*getSize()/5-paint.measureText(adjustedTitle)/2,getSize()/25+paint.getTextSize()/2,paint);
 
     }
     private String adjustString(Paint paint) {
@@ -57,7 +64,7 @@ public class CheckBoxElement extends Element{
         super.setDimension(x,y,size);
     }
     public boolean handleTap(float x,float y) {
-        boolean condition = x>=getX() && x<=getX()+getSize()/5 && y>=getY() && y<=getY()+getSize()/5;
+        boolean condition = x>=getX() && x<=getX()+getSize()/10 && y>=getY() && y<=getY()+getSize()/10;
         if(condition) {
             startUpdating();
         }

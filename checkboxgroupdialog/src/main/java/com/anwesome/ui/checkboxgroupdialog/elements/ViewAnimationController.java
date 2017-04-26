@@ -25,6 +25,7 @@ public class ViewAnimationController implements Animator.AnimatorListener,ValueA
     public void start() {
         startAnim.start();
         dir = 1;
+        dialogView.setVisibility(View.VISIBLE);
     }
     public void end() {
         endAnim.start();
@@ -42,9 +43,7 @@ public class ViewAnimationController implements Animator.AnimatorListener,ValueA
 
     }
     public void onAnimationStart(Animator animator) {
-        if(dir == 1) {
-            dialogView.setVisibility(View.VISIBLE);
-        }
+
     }
     public void onAnimationUpdate(ValueAnimator valueAnimator) {
         float factor = (float)(valueAnimator.getAnimatedValue());

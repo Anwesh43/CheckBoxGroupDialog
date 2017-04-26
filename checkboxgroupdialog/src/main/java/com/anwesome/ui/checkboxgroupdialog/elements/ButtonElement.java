@@ -20,9 +20,12 @@ public class ButtonElement extends Element {
         paint.setColor(Color.BLACK);
         String okText = "OK";
         paint.setTextSize(getSize()/6);
-        canvas.drawText(okText,getSize()/2-paint.measureText(okText)/2,paint.getTextSize()/2,paint);
+        canvas.drawText(okText,getSize()/2-paint.measureText(okText)/2,getSize()/8+paint.getTextSize()/2,paint);
         paint.setColor(Color.parseColor("#99000000"));
-        canvas.drawRoundRect(new RectF(0,0,getSize(),h),h/10,h/10,paint);
+        canvas.save();
+        canvas.translate(getSize()/2,h/2);
+        canvas.scale(scale,scale);
+        canvas.drawRoundRect(new RectF(-getSize()/2,-h/2,getSize()/2,h/2),h/10,h/10,paint);
     }
     public ButtonElement(ButtonClickListener buttonClickListener) {
         this.buttonClickListener = buttonClickListener;
@@ -35,6 +38,9 @@ public class ButtonElement extends Element {
                 buttonClickListener.onButtonClick();
             }
         }
+    }
+    public boolean stopUpdating() {
+        return dir == 0;
     }
     protected void startUpdating() {
         if(dir == 0 && scale <= 0) {
