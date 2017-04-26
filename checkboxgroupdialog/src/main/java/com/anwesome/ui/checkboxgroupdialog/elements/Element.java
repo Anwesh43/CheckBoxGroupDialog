@@ -11,10 +11,21 @@ public class Element {
     public float getSize() {
         return size;
     }
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
+    }
     public void draw(Canvas canvas, Paint paint) {
         canvas.save();
         canvas.translate(x,y);
+        drawElement(canvas,paint);
         canvas.restore();
+    }
+    protected void drawElement(Canvas canvas,Paint paint) {
+
     }
     public void update() {;
 
@@ -22,7 +33,7 @@ public class Element {
     public boolean stopUpdating() {
         return false;
     }
-    public void startUpdating() {
+    protected void startUpdating() {
 
     }
     public void setDimension(float x,float y,float size) {
