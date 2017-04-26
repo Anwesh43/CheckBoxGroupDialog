@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CheckBoxGroupDialogDemo.iml" filepath="$PROJECT_DIR$/CheckBoxGroupDialogDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/checkboxgroup/checkboxgroup.iml" filepath="$PROJECT_DIR$/checkboxgroup/checkboxgroup.iml" />
+      <module fileurl="file://$PROJECT_DIR$/checkboxgroupdialog/checkboxgroupdialog.iml" filepath="$PROJECT_DIR$/checkboxgroupdialog/checkboxgroupdialog.iml" />
     </modules>
   </component>
 </project>
