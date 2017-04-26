@@ -20,6 +20,12 @@ public class ViewAnimationController implements Animator.AnimatorListener,ValueA
         endAnim.addListener(this);
         endAnim.addUpdateListener(this);
     }
+    public void start() {
+        startAnim.start();
+    }
+    public void end() {
+        endAnim.start();
+    }
     public void onAnimationEnd(Animator animator) {
 
     }
